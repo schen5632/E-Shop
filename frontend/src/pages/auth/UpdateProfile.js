@@ -32,8 +32,8 @@ const UpdateProfile = () => {
         await passwordUpdate(passwordRef.current.value);
       }
       setMessage("Profile updated successfully!");
-    } catch {
-      setError("Failed to Update Profile");
+    } catch (e) {
+      setError(e.message.substring(10));
     }
     setLoading(false);
   }

@@ -6,6 +6,7 @@ import "./cart.css";
 import Grid from "@mui/material/Grid";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
 
 import { useNavigate } from "react-router-dom";
 
@@ -33,6 +34,7 @@ const Cart = () => {
       body: JSON.stringify({ items: checkoutItems }),
     })
       .then((response) => {
+        console.log("stripe response: ", response);
         return response.json();
       })
       .then((response) => {
@@ -40,7 +42,9 @@ const Cart = () => {
           window.location.assign(response.url);
         }
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error("stripe error: ", error);
+      });
   }
 
   useEffect(() => {
@@ -62,11 +66,25 @@ const Cart = () => {
           })}
         </div>
         {totalAmount > 0 ? (
-          <div className="checkout">
+          <>
             <h5>Subtotal: ${totalAmount}</h5>
-            <button onClick={() => navigate("/")}>Continue Shopping</button>
-            <button onClick={checkout}>Checkout</button>
-          </div>
+            <div>
+              <Button
+                variant="dark"
+                onClick={() => navigate("/")}
+                className="mx-1 mb-5 mt-3"
+              >
+                Continue Shopping
+              </Button>
+              <Button
+                variant="dark"
+                onClick={checkout}
+                className="mx-1 mb-5 mt-3"
+              >
+                Checkout
+              </Button>
+            </div>
+          </>
         ) : (
           <Alert key={"warning"} variant={"warning"}>
             Your Shopping Cart is Empty

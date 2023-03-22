@@ -7,7 +7,7 @@ import ShopNavbar from "../../components/Navbar";
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useContext(ShopContext);
+  const { login, setSignedIn } = useContext(ShopContext);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -19,11 +19,11 @@ const Login = () => {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      console.log("are we were?");
+      setSignedIn(true);
       navigate("/");
     } catch (e) {
-      console.log(e);
-      setError("Failed to login");
+      console.error("login error: ", e);
+      setError(e.message.substring(10));
     }
     setLoading(false);
   }

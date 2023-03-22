@@ -1,5 +1,6 @@
 package com.stephen.backend.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -17,17 +18,17 @@ public class OrderItem {
 	
 	private int quantity;
 	
-	@ManyToOne
-	@JoinColumn(name = "order_id")
-	private Order order;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "orderWhole_id", referencedColumnName = "id")
+	private OrderWhole orderWhole;
 	
 
-	public Order getOrder() {
-		return order;
+	public OrderWhole getOrder() {
+		return orderWhole;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setOrder(OrderWhole orderWhole) {
+		this.orderWhole = orderWhole;
 	}
 
 	public Long getId() {

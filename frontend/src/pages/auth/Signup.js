@@ -8,7 +8,7 @@ const Signup = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup, currentUser } = useContext(ShopContext);
+  const { signup, currentUser, setSignedIn } = useContext(ShopContext);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -24,9 +24,12 @@ const Signup = () => {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      setSignedIn(true);
       navigate("/");
-    } catch {
-      setError("Failed to create an account");
+    } catch (e) {
+      console.log("signup error", e);
+      //setError("Failed to create an account");
+      setError(e.message.substring(10));
     }
     setLoading(false);
   }

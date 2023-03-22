@@ -54,5 +54,6 @@ public class ProductController {
     @DeleteMapping("/product/{id}")
     String deleteProduct(@PathVariable Long id) {
     	productRepository.deleteById(id);
-    	return "Product with id " + id + " has been deleted!";    }
+    	return "Product with id " + id + " has been deleted!";    
+    }
 }

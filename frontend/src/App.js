@@ -10,6 +10,7 @@ import Login from "./pages/auth/Login";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import UpdateProfile from "./pages/auth/UpdateProfile";
 import PrivateRoute from "./pages/auth/PrivateRoute";
+import Orders from "./pages/orders/Orders";
 import { ShopContextProvider } from "./context/ShopContextProvider";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                 </PrivateRoute>
               }
             ></Route>
+            <Route path="/orders" element={<Orders />}></Route>
           </Routes>
         </Router>
       </ShopContextProvider>

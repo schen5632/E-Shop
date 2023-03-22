@@ -98,7 +98,7 @@ const ShopNavbar = (props) => {
                 </NavDropdown.Item>
               )}
             </NavDropdown>
-            <Nav.Link as={Link} to="/">
+            <Nav.Link as={Link} to="/orders">
               Orders
             </Nav.Link>
             <Nav.Link as={Link} to="/cart">

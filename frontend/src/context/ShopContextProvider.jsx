@@ -29,23 +29,24 @@ export const ShopContextProvider = (props) => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("Featured");
   const [signedIn, setSignedIn] = useState(false);
+  const [status, setStatus] = useState("");
 
   const signup = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        console.log("signup successful");
-        setSignedIn(true);
-      })
-      .catch((e) => console.log(e));
+    return createUserWithEmailAndPassword(auth, email, password);
+    // .then(() => {
+    //   console.log("signup successful");
+    //   setSignedIn(true);
+    // })
+    // .catch((e) => console.log(e));
   };
 
   function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        console.log("sign in successful");
-        setSignedIn(true);
-      })
-      .catch((e) => console.log(e));
+    return signInWithEmailAndPassword(auth, email, password);
+    // .then(() => {
+    //   console.log("sign in successful");
+    //   setSignedIn(true);
+    // })
+    // .catch((e) => console.log(e));
   }
 
   function signout() {
@@ -66,9 +67,9 @@ export const ShopContextProvider = (props) => {
   }
 
   function passwordUpdate(password) {
-    return updatePassword(currentUser, password)
-      .then(() => console.log("update successful"))
-      .catch((e) => console.log(e));
+    return updatePassword(currentUser, password);
+    // .then(() => console.log("update successful"))
+    // .catch((e) => console.log(e));
   }
 
   function sortProducts(products) {
@@ -159,6 +160,7 @@ export const ShopContextProvider = (props) => {
     search,
     sort,
     signedIn,
+    setSignedIn,
     emailUpdate,
     passwordUpdate,
     resetPassword,
