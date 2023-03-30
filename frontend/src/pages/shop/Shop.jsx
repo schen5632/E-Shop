@@ -15,7 +15,7 @@ const Shop = () => {
 
   useEffect(() => {
     loadProducts();
-    console.log(products);
+    console.log("products", products);
   }, [sort]);
 
   return (

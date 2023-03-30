@@ -141,7 +141,11 @@ export const ShopContextProvider = (props) => {
   };
 
   const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    if (!cartItems[itemId]) {
+      setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
+    } else {
+      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    }
     console.log("CART ITEMS: ", cartItems);
   };
 
