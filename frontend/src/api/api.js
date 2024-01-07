@@ -10,8 +10,8 @@ export const createProduct = (product) => apiClient.post(`product`, product);
 export const getAllProducts = () =>
   apiClient.get(`products`, {
     auth: {
-      username: "schen",
-      password: "dummy",
+      username: process.env.REACT_APP_BACKEND_USERNAME,
+      password: process.env.REACT_APP_BACKEND_PASSWORD,
     },
   });
 
