@@ -3,15 +3,29 @@ import { Form, Button, Card, Container, Alert } from "react-bootstrap";
 import { ShopContext } from "../../context/ShopContextProvider";
 import { Link, useNavigate } from "react-router-dom";
 import ShopNavbar from "../../components/Navbar";
+import { useSelector, useDispatch } from "react-redux";
+import { setSignedIn } from "./signedInSlice";
+import auth from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Signup = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup, currentUser, setSignedIn } = useContext(ShopContext);
+  //const { signup, currentUser, setSignedIn } = useContext(ShopContext);
+  const dispatch = useDispatch();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const signup = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log("signup successful");
+        dispatch(setSignedIn(true));
+      })
+      .catch((e) => console.log(e));
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -24,7 +38,8 @@ const Signup = () => {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      setSignedIn(true);
+      //setSignedIn(true);
+
       navigate("/");
     } catch (e) {
       console.log("signup error", e);

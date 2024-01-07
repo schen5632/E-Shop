@@ -13,7 +13,7 @@ const Product = (props) => {
       <Card.Img
         variant="top"
         src={props.data.imageUrl}
-        style={{ height: "10rem" }}
+        style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
       />
       <Card.Body>
         <Card.Title>{props.data.name}</Card.Title>

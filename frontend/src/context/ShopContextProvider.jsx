@@ -15,7 +15,7 @@ export const ShopContext = createContext(null);
 
 const getDefaultCart = () => {
   let cart = {};
-  for (let i = 1; i < 4; i++) {
+  for (let i = 1; i < 100; i++) {
     cart[i] = 0;
   }
   return cart;
@@ -30,33 +30,6 @@ export const ShopContextProvider = (props) => {
   const [sort, setSort] = useState("Featured");
   const [signedIn, setSignedIn] = useState(false);
   const [status, setStatus] = useState("");
-
-  const signup = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-    // .then(() => {
-    //   console.log("signup successful");
-    //   setSignedIn(true);
-    // })
-    // .catch((e) => console.log(e));
-  };
-
-  function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
-    // .then(() => {
-    //   console.log("sign in successful");
-    //   setSignedIn(true);
-    // })
-    // .catch((e) => console.log(e));
-  }
-
-  function signout() {
-    return signOut(auth)
-      .then(() => {
-        console.log("sign out successful");
-        setSignedIn(false);
-      })
-      .catch((e) => console.log(e));
-  }
 
   function resetPassword(email) {
     return sendPasswordResetEmail(auth, email);
@@ -120,7 +93,7 @@ export const ShopContextProvider = (props) => {
   const loadProducts = async () => {
     try {
       const result = await getAllProducts();
-      console.log(result.data);
+      console.log("products in load products", result);
       sortProducts(result.data);
       setProducts(result.data);
     } catch (e) {
@@ -168,7 +141,6 @@ export const ShopContextProvider = (props) => {
     emailUpdate,
     passwordUpdate,
     resetPassword,
-    signout,
     sortProducts,
     setSort,
     setSearch,
@@ -177,8 +149,6 @@ export const ShopContextProvider = (props) => {
     updateCartItemCount,
     getTotalCartAmount,
     loadProducts,
-    signup,
-    login,
   };
   console.log("cart items", cartItems);
   return (

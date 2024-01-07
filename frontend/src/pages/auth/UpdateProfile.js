@@ -8,8 +8,7 @@ const UpdateProfile = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup, currentUser, emailUpdate, passwordUpdate } =
-    useContext(ShopContext);
+  const { currentUser, emailUpdate, passwordUpdate } = useContext(ShopContext);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

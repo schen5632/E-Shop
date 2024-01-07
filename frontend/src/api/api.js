@@ -1,10 +1,19 @@
 import axios from "axios";
 
-const apiClient = axios.create({ baseURL: "http://localhost:8080" });
+const url = process.env.REACT_APP_BACKEND_URL_PROD;
+//const url = process.env.REACT_APP_BACKEND_URL_DEV;
+const apiClient = axios.create({
+  baseURL: url,
+});
 
 export const createProduct = (product) => apiClient.post(`product`, product);
-
-export const getAllProducts = () => apiClient.get(`products`);
+export const getAllProducts = () =>
+  apiClient.get(`products`, {
+    auth: {
+      username: "schen",
+      password: "dummy",
+    },
+  });
 
 export const getProductById = (id) => apiClient.get(`product/${id}`);
 

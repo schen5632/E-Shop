@@ -50,3 +50,12 @@
   color: white;
   cursor: pointer;
 }
+
+.products-heading {
+  text-align: center;
+  margin: 40px 0px;
+}
+.products-heading h2 {
+  font-size: 40px;
+  font-weight: 800;
+}

@@ -3,14 +3,28 @@ import { Form, Button, Card, Container, Alert } from "react-bootstrap";
 import { ShopContext } from "../../context/ShopContextProvider";
 import { Link, useNavigate } from "react-router-dom";
 import ShopNavbar from "../../components/Navbar";
+import { useSelector, useDispatch } from "react-redux";
+import { setSignedIn } from "./signedInSlice";
+import auth from "../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login, setSignedIn } = useContext(ShopContext);
+  //const { login, setSignedIn } = useContext(ShopContext);
+  const dispatch = useDispatch();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  function login(email, password) {
+    return signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log("sign in successful");
+        dispatch(setSignedIn(true));
+      })
+      .catch((e) => console.log(e));
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,7 +33,8 @@ const Login = () => {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      setSignedIn(true);
+      //setSignedIn(true);
+
       navigate("/");
     } catch (e) {
       console.error("login error: ", e);

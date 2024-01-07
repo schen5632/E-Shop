@@ -56,7 +56,7 @@ const Cart = () => {
   return (
     <>
       <ShopNavbar />
-      <Container className="cart">
+      <Container className="cart" style={{ marginTop: "100px" }}>
         <h1 className="mt-4">Your Cart Items</h1>
         <div className="cartItems">
           {products.map((product) => {

@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import { Col } from "react-bootstrap";
 
 const CartItem = (props) => {
   const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
@@ -13,10 +14,10 @@ const CartItem = (props) => {
   return (
     <Card
       style={{
-        width: "50rem",
+        // width: "50rem",
         display: "flex",
         flexDirection: "row",
-        height: "10rem",
+        height: "13rem",
       }}
       className="cartItem"
     >
@@ -24,7 +25,8 @@ const CartItem = (props) => {
         variant="top"
         src={props.data.imageUrl}
         className="ms-4 me-2"
-        style={{ height: "7rem" }}
+        style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
+        // style={{ height: "7rem" }}
       />
       <Card.Body>
         <Card.Title>{props.data.name}</Card.Title>
