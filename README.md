@@ -6,8 +6,6 @@ Link for web application hosted on AWS: http://eshop-frontend.s3-website.ca-cent
 
 ![image](https://github.com/schen5632/E-Shop/assets/93620334/fdff2fed-c16d-43e8-bb56-4dadb484f516)
 
-![image](https://github.com/schen5632/E-Shop/assets/93620334/25d7ffd7-5022-41e0-b618-5c5c2389c380)
-
 ![image](https://github.com/schen5632/E-Shop/assets/93620334/79d99598-ac7b-4670-ada5-21239c2e2ff3)
 
 ![image](https://github.com/schen5632/E-Shop/assets/93620334/ec5f0fa5-a71e-4076-aa97-9be8ccdabcbb)
