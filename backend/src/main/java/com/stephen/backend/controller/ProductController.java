@@ -16,7 +16,7 @@ import com.stephen.backend.model.Product;
 import com.stephen.backend.repository.ProductRepository;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://eshop-frontend.s3-website.ca-central-1.amazonaws.com/"})
 public class ProductController {
 	
 	@Autowired
@@ -24,7 +24,6 @@ public class ProductController {
 	
 	@PostMapping("/product")
 	Product createProduct(@RequestBody Product newProduct) {
-		System.out.println(newProduct);
 		return productRepository.save(newProduct);
 	}
 	
