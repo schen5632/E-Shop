@@ -14,45 +14,37 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stephen.backend.model.Product;
 import com.stephen.backend.repository.ProductRepository;
+import com.stephen.backend.service.ProductService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "http://eshop-frontend.s3-website.ca-central-1.amazonaws.com/"})
 public class ProductController {
 	
 	@Autowired
-	private ProductRepository productRepository;
+	private ProductService productService;
 	
 	@PostMapping("/product")
 	Product createProduct(@RequestBody Product newProduct) {
-		return productRepository.save(newProduct);
+		return productService.createProduct(newProduct);
 	}
 	
 	@GetMapping("/products")
 	List<Product> getAllProducts() {
-		return productRepository.findAll();
+		return productService.getProducts();
 	}
 	
 	@GetMapping("/product/{id}")
 	Product getProductById(@PathVariable Long id) {
-		return productRepository.findById(id).get();
+		return productService.getProductById(id);
 	}
 	
     @PutMapping("/product/{id}")
     Product updateProduct(@RequestBody Product newProduct, @PathVariable Long id) {
-        return productRepository.findById(id)
-                .map(product -> {
-                    product.setName(newProduct.getName());
-                    product.setPriceId(newProduct.getPriceId());
-                    product.setPrice(newProduct.getPrice());
-                    product.setImageUrl(newProduct.getImageUrl());
-                    product.setCategory(newProduct.getCategory());
-                    return productRepository.save(product);
-                }).get();
+        return productService.updateProductById(newProduct, id);
     }	
     
     @DeleteMapping("/product/{id}")
     String deleteProduct(@PathVariable Long id) {
-    	productRepository.deleteById(id);
-    	return "Product with id " + id + " has been deleted!";    
+    	return productService.deleteProductById(id);
     }
 }
