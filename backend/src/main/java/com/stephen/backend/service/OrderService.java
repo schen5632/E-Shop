@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.stephen.backend.model.OrderJoinId;
 import com.stephen.backend.model.OrderWhole;
 import com.stephen.backend.model.Product;
 import com.stephen.backend.repository.OrderRepository;
@@ -29,7 +30,11 @@ public class OrderService {
 	}
 	
 	public List<OrderWhole> getOrdersByEmail(String email) {
-		return orderRepository.findByEmail(email);
+		return orderRepository.findByUserEmail(email);
+	}
+	
+	public List<OrderJoinId> getOrderJoinInfo() {
+		return orderRepository.getJoinInfo();
 	}
 	
 	public OrderWhole createOrder(OrderWhole orderWhole) {

@@ -28,8 +28,25 @@ public class OrderItemService {
 		return orderItemRepository.findAll();
 	}
 	
+	public OrderItem getOrderItemById(Long id) {
+		return orderItemRepository.findById(id).get();
+	}
+
+	public List<OrderItem> getOrderItemsByProductId(Long productId) {
+		return orderItemRepository.findByProductId(productId);
+	}
+	
 	public OrderItem createOrderItem(OrderItem orderItem) {
 		return orderItemRepository.save(orderItem);
+	}
+	
+	public OrderItem updateOrderItemById(OrderItem newItem, Long id) {
+        return orderItemRepository.findById(id)
+                .map(orderItem -> {
+                	orderItem.setProductId(newItem.getProductId());
+                	orderItem.setQuantity(newItem.getQuantity());
+                    return orderItemRepository.save(orderItem);
+                }).get();
 	}
 	
    public OrderItem assignOrderToOrderItem(
@@ -46,4 +63,6 @@ public class OrderItemService {
     	orderItemRepository.deleteById(id);
     	return "Order Item with id " + id + " has been deleted!";    
     }
+
+
 }

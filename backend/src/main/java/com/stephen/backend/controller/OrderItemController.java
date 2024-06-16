@@ -27,9 +27,24 @@ public class OrderItemController {
 		return orderItemService.getOrderItems();
 	}
 	
+	@GetMapping("/orderItem/{id}")
+	OrderItem getOrderItemById(@PathVariable Long id) {
+		return orderItemService.getOrderItemById(id);
+	}
+	
+	@GetMapping("/orderItems/productId/{productId}")
+	List<OrderItem> getOrderitemsByProductId(@PathVariable Long productId) {
+		return orderItemService.getOrderItemsByProductId(productId);
+	}
+	
 	@PostMapping("/orderItem")
 	OrderItem createOrderItem(@RequestBody OrderItem orderItem) {
 		return orderItemService.createOrderItem(orderItem);
+	}
+	
+	@PutMapping("/orderItem/{id}")
+	OrderItem updateOrderItemById(@RequestBody OrderItem orderItem, @PathVariable Long id) {
+		return orderItemService.updateOrderItemById(orderItem, id);
 	}
 	
     @PutMapping("orderItem/{orderItemId}/order/{orderId}")
