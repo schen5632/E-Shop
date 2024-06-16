@@ -2,6 +2,8 @@ package com.stephen.backend.model;
 
 import java.math.BigDecimal;
 
+import org.springframework.http.ContentDisposition.Builder;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +25,46 @@ public class Product {
 	private String imageUrl;
 	
 	private String category;
+	
+	private Product(Builder builder) {
+		this.priceId = builder.priceId;
+		this.name = builder.name;
+		this.price = builder.price;
+		this.category = builder.category;
+		this.imageUrl = builder.imageUrl;
+	}
+	
+	public static class Builder {
+		private String priceId;
+
+		private String name;
+		
+		private BigDecimal price;
+
+		private String imageUrl;
+		
+		private String category;
+		
+		public Builder(String name, BigDecimal price, String category) {
+			this.name = name;
+			this.price = price;
+			this.category = category;		
+		}
+		
+		public Builder withImageUrl(String imageUrl) {
+			this.imageUrl = imageUrl;
+			return this;
+		}
+		
+		public Builder withPriceId(String priceId) {
+			this.priceId = priceId;
+			return this;
+		}
+		
+		public Product build() {
+			return new Product(this);
+		}
+	}
 
 	public Long getId() {
 		return id;
