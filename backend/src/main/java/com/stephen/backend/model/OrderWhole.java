@@ -3,16 +3,24 @@ package com.stephen.backend.model;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 public class OrderWhole {
@@ -28,9 +36,10 @@ public class OrderWhole {
 	@CreationTimestamp
 	private Date dateUpdated;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "orderWhole")
-	private Set<OrderItem> orderItems = new HashSet<>();
+//	@JsonManagedReference
+    @OneToMany(targetEntity = OrderItem.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="order_whole_id",referencedColumnName = "id")
+	private List<OrderItem> orderItems;
 
 	public Long getId() {
 		return id;
@@ -56,11 +65,11 @@ public class OrderWhole {
 		this.userEmail = userEmail;
 	}
 
-	public Set<OrderItem> getOrderItems() {
+	public List<OrderItem> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(Set<OrderItem> orderItems) {
+	public void setOrderItems(List<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
 

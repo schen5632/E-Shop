@@ -1,11 +1,13 @@
 package com.stephen.backend.model;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.*;
 
 @Entity
 public class OrderItem {
@@ -18,8 +20,9 @@ public class OrderItem {
 	
 	private int quantity;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "orderWhole_id", referencedColumnName = "id")
+	/*
+	@ManyToOne
+	@JsonBackReference
 	private OrderWhole orderWhole;
 	
 
@@ -30,6 +33,7 @@ public class OrderItem {
 	public void setOrder(OrderWhole orderWhole) {
 		this.orderWhole = orderWhole;
 	}
+	*/
 
 	public Long getId() {
 		return id;

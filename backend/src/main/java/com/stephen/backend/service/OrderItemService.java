@@ -32,13 +32,13 @@ public class OrderItemService {
 		return orderItemRepository.save(orderItem);
 	}
 	
-    public OrderItem assignOrderToOrderItem(
+   public OrderItem assignOrderToOrderItem(
     		Long orderId,
             Long orderItemId
     ) {
         OrderItem orderItem = orderItemRepository.findById(orderItemId).get();
         OrderWhole orderWhole = orderRepository.findById(orderId).get();
-        orderItem.setOrder(orderWhole);
+//        orderItem.setOrder(orderWhole);
         return orderItemRepository.save(orderItem);
     }
     
