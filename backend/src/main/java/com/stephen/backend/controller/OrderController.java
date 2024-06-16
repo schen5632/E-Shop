@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,9 +25,24 @@ public class OrderController {
 		return orderService.getOrders();
 	}
 	
+	@GetMapping("/orders/{id}")
+	OrderWhole getOrderById(@PathVariable Long id) {
+		return orderService.getOrderById(id).get();
+	}
+	
+	@GetMapping("/orders/email/{email}")
+	List<OrderWhole> getOrdersByEmail(@PathVariable String email) {
+		return orderService.getOrdersByEmail(email);
+	}
+	
 	@PostMapping("/order")
 	OrderWhole createOrder(@RequestBody OrderWhole orderWhole) {
 		return orderService.createOrder(orderWhole);
+	}
+	
+	@PutMapping("/order/{id}")
+	OrderWhole updateOrderById(@RequestBody OrderWhole order, @PathVariable Long id) {
+		return orderService.updateOrderById(order, id);
 	}
 	
     @DeleteMapping("/order/{id}")
