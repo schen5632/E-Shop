@@ -15,23 +15,21 @@ import com.stephen.backend.model.OrderWhole;
 import com.stephen.backend.model.OrderItem;
 import com.stephen.backend.repository.OrderItemRepository;
 import com.stephen.backend.repository.OrderRepository;
+import com.stephen.backend.service.OrderItemService;
 
 @RestController
 public class OrderItemController {
 	@Autowired 
-	OrderItemRepository orderItemRepository;
-	
-	@Autowired 
-	OrderRepository orderRepository;
+	private OrderItemService orderItemService;
 	
 	@GetMapping("/orderItems")
 	List<OrderItem> getOrderItems() {
-		return orderItemRepository.findAll();
+		return orderItemService.getOrderItems();
 	}
 	
 	@PostMapping("/orderItem")
 	OrderItem createOrderItem(@RequestBody OrderItem orderItem) {
-		return orderItemRepository.save(orderItem);
+		return orderItemService.createOrderItem(orderItem);
 	}
 	
     @PutMapping("orderItem/{orderItemId}/order/{orderId}")
@@ -39,16 +37,12 @@ public class OrderItemController {
             @PathVariable Long orderId,
             @PathVariable Long orderItemId
     ) {
-        OrderItem orderItem = orderItemRepository.findById(orderItemId).get();
-        OrderWhole orderWhole = orderRepository.findById(orderId).get();
-        orderItem.setOrder(orderWhole);
-        return orderItemRepository.save(orderItem);
+    	return orderItemService.assignOrderToOrderItem(orderId, orderItemId);
     }
     
     @DeleteMapping("/orderItem/{id}")
     String deleteOrderItem(@PathVariable Long id) {
-    	orderItemRepository.deleteById(id);
-    	return "Order Item with id " + id + " has been deleted!";    
+    	return orderItemService.deleteOrderItem(id);
     }
 	
 }

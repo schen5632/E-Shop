@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stephen.backend.model.OrderWhole;
 import com.stephen.backend.repository.OrderRepository;
+import com.stephen.backend.service.OrderService;
 
 @RestController
 public class OrderController {
 	@Autowired 
-	OrderRepository orderRepository;
+	OrderService orderService;
 	
 	@GetMapping("/orders")
 	List<OrderWhole> getOrders() {
-		return orderRepository.findAll();
+		return orderService.getOrders();
 	}
 	
 	@PostMapping("/order")
 	OrderWhole createOrder(@RequestBody OrderWhole orderWhole) {
-		return orderRepository.save(orderWhole);
+		return orderService.createOrder(orderWhole);
 	}
 	
     @DeleteMapping("/order/{id}")
-    String deleteOrder(@PathVariable Long id) {
-    	orderRepository.deleteById(id);
-    	return "Order with id " + id + " has been deleted!";    
+    String deleteOrderById(@PathVariable Long id) {
+    	return orderService.deleteOrderById(id);
     }
 	
 }
