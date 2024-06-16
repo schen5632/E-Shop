@@ -31,6 +31,14 @@ public class ProductService {
         return productRepository.findById(id).get();
     }
     
+    public Product getProductByName(String name) {
+    	return productRepository.findByName(name);
+    }
+    
+    public List<Product> getProductsByCategory(String category) {
+    	return productRepository.findByCategory(category);
+    }
+    
     public Product updateProductById(Product newProduct, Long id) {
         return productRepository.findById(id)
                 .map(product -> {
