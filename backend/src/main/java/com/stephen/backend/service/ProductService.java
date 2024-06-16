@@ -48,7 +48,7 @@ public class ProductService {
                     product.setImageUrl(newProduct.getImageUrl());
                     product.setCategory(newProduct.getCategory());
                     return productRepository.save(product);
-                }).get();
+                }).get(); 
     }
 
     public String deleteProductById(Long id) {
