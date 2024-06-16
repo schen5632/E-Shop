@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.stephen.backend.model.OrderJoinId;
+import com.stephen.backend.dto.OrderResultDTO;
 import com.stephen.backend.model.OrderWhole;
 import com.stephen.backend.repository.OrderRepository;
 import com.stephen.backend.service.OrderService;
@@ -37,7 +37,7 @@ public class OrderController {
 	}
 	
 	@GetMapping("/orders/joinInfo")
-	List<OrderJoinId> getOrderJoinInfo() {
+	List<OrderResultDTO> getOrderJoinInfo() {
 		return orderService.getOrderJoinInfo();
 	}
 	
