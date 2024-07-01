@@ -17,7 +17,7 @@ import com.stephen.backend.repository.ProductRepository;
 import com.stephen.backend.service.ProductService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "http://eshop-frontend.s3-website.ca-central-1.amazonaws.com/"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://eshop-sc.s3-website.ca-central-1.amazonaws.com/"})
 public class ProductController {
 	
 	@Autowired

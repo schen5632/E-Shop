@@ -28,8 +28,8 @@ app.post("/checkout", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url: process.env.DEV_URL,
-    cancel_url: process.env.DEV_URL,
+    success_url: process.env.PROD_URL,
+    cancel_url: process.env.PROD_URL,
   });
 
   res.send(
