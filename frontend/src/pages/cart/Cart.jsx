@@ -26,7 +26,7 @@ const Cart = () => {
       }
     });
     console.log("checkoutItems", checkoutItems);
-    await fetch("http://localhost:4000/checkout", {
+    await fetch(process.env.REACT_APP_STRIPE_SERVER_PROD, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,6 +50,7 @@ const Cart = () => {
   useEffect(() => {
     loadProducts();
     console.log("cartItems: ", cartItems);
+    console.log("stripe url: ", process.env.REACT_APP_STRIPE_SERVER_PROD);
   }, []);
 
   const navigate = useNavigate();

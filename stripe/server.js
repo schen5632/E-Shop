@@ -10,6 +10,10 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 app.post("/checkout", async (req, res) => {
   console.log(req.body);
   const items = req.body.items;
@@ -24,8 +28,8 @@ app.post("/checkout", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url: process.env.PROD_URL,
-    cancel_url: process.env.PROD_URL,
+    success_url: process.env.DEV_URL,
+    cancel_url: process.env.DEV_URL,
   });
 
   res.send(

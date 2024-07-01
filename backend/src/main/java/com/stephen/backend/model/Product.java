@@ -26,6 +26,10 @@ public class Product {
 	
 	private String category;
 	
+	public Product() {
+		
+	}
+	
 	private Product(Builder builder) {
 		this.priceId = builder.priceId;
 		this.name = builder.name;
