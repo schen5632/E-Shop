@@ -1,4 +1,7 @@
-Full Stack ecommerce application built using Java, Spring Boot, React, NodeJS, MySQL, Stripe, Firebase, JUnit. 
+Full Stack ecommerce application with payment processing and user authentication
+
+Backend, Java, Spring Boot, JUnit, MySQL, NodeJS, Stripe (payments), Firebase (authentication)
+Frontend: React, JavaScript, Redux
 
 ![image](https://github.com/schen5632/E-Shop/assets/93620334/bbbf9844-fbf5-4398-a5c5-5d807426e7bf)
 
