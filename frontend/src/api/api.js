@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const url = process.env.REACT_APP_BACKEND_URL_PROD;
-//const url = process.env.REACT_APP_BACKEND_URL_DEV;
+//const url = process.env.REACT_APP_BACKEND_URL_PROD;
+const url = process.env.REACT_APP_BACKEND_URL_DEV;
 const apiClient = axios.create({
   baseURL: url,
 });
