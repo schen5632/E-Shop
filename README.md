@@ -2,8 +2,9 @@ Full Stack ecommerce application with payment processing and user authentication
 
 Demo: http://eshop-sc.s3-website.ca-central-1.amazonaws.com/
 
-Backend, Java, Spring Boot, JUnit, MySQL, NodeJS, Stripe (payments), Firebase (authentication) <br/>
 Frontend: React, JavaScript, Redux
+Backend, Java, Spring Boot, JUnit, MySQL, NodeJS, Stripe (payments), Firebase (authentication) <br/>
+
 
 ![image](https://github.com/schen5632/E-Shop/assets/93620334/bbbf9844-fbf5-4398-a5c5-5d807426e7bf)
 
