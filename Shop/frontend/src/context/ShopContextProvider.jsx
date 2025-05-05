@@ -30,6 +30,80 @@ export const ShopContextProvider = (props) => {
   const [sort, setSort] = useState("Featured");
   const [signedIn, setSignedIn] = useState(false);
   const [status, setStatus] = useState("");
+  const temp = [
+    {
+      id: 1,
+      priceId: "price_1MhcOYEutmLY32PU8PfRV9uR",
+      name: 'MacBook Pro 14"',
+      price: 2599.0,
+      imageUrl:
+        "https://www.macworld.com/wp-content/uploads/2023/01/2023-MacBook-Pro-models-13.jpg?quality=50&strip=all",
+      category: "laptops",
+    },
+    {
+      id: 2,
+      priceId: "price_1MhcQoEutmLY32PUZfFOSNEE",
+      name: 'iPad Pro 11"',
+      price: 1099.0,
+      imageUrl:
+        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-finish-select-202212-11inch-space-gray-wifi_FMT_WHH?wid=1280&hei=720&fmt=p-jpg&qlt=95&.v=1670865949101",
+      category: "ipads",
+    },
+    {
+      id: 3,
+      priceId: "price_1MhcT0EutmLY32PUOB5MmDeA",
+      name: "iPhone 14 Pro",
+      price: 1399.0,
+      imageUrl:
+        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-select-202209-6-1inch-deeppurple?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1663703840578",
+      category: "smartphones",
+    },
+    {
+      id: 4,
+      priceId: "price_1MntqsEutmLY32PU4kVfO8cE",
+      name: "AirPods Pro",
+      price: 329.0,
+      imageUrl:
+        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQD83?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1660803972361",
+      category: "headphones",
+    },
+    {
+      id: 5,
+      priceId: "price_1MoGS0EutmLY32PUFCEI1DiI",
+      name: "Beats Studio3 Wireless Headphones",
+      price: 249.0,
+      imageUrl:
+        "https://www.beatsbydre.com/content/dam/beats/web/product/headphones/studio3-wireless/pdp/refresh2022/studio3-pdp-p02.png.large.2x.png",
+      category: "headphones",
+    },
+    {
+      id: 8,
+      priceId: "price_1MoGWUEutmLY32PUPU8UG8AD",
+      name: "Sony WH-1000XM5 Wireless Headphones",
+      price: 499.0,
+      imageUrl:
+        "https://www.sony.ca/image/6145c1d32e6ac8e63a46c912dc33c5bb?fmt=pjpeg&bgcolor=FFFFFF&bgc=FFFFFF&wid=2515&hei=1320",
+      category: "headphones",
+    },
+    {
+      id: 9,
+      priceId: "price_1MoGiREutmLY32PUmOxr0s2H",
+      name: "Sennheiser HD560s Audiophile Headphones",
+      price: 229.0,
+      imageUrl:
+        "https://www.thepowercentre.ca/files/image/attachment/15804/HD560S.jpg",
+      category: "headphones",
+    },
+    {
+      id: 10,
+      priceId: "price_1MoGmfEutmLY32PUnh6wnANP",
+      name: "Sennheiser HD600 Audiophile Headphones",
+      price: 519.0,
+      imageUrl:
+        "https://cdn.long-mcquade.com/files/8293/md_eb7f1d3c528c0e0a4ac42d4e40a326e1.jpg",
+      category: "headphones",
+    },
+  ];
 
   function resetPassword(email) {
     return sendPasswordResetEmail(auth, email);
@@ -92,10 +166,16 @@ export const ShopContextProvider = (props) => {
 
   const loadProducts = async () => {
     try {
-      const result = await getAllProducts();
-      console.log("products in load products", result);
-      sortProducts(result.data);
-      setProducts(result.data);
+      // Get from backend
+      //const result = await getAllProducts();
+      // console.log("products in load products", result);
+      // sortProducts(result.data);
+      // setProducts(result.data);
+
+      // get from const
+      console.log("getting from cache!");
+      sortProducts(temp);
+      setProducts(temp);
     } catch (e) {
       console.error(e);
     }

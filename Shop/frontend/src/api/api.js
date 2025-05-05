@@ -1,12 +1,13 @@
 import axios from "axios";
 
-//const url = process.env.REACT_APP_BACKEND_URL_PROD;
-const url = process.env.REACT_APP_BACKEND_URL_DEV;
+const url = process.env.REACT_APP_BACKEND_URL_PROD;
+//const url = process.env.REACT_APP_BACKEND_URL_DEV;
 const apiClient = axios.create({
   baseURL: url,
 });
 
 export const createProduct = (product) => apiClient.post(`product`, product);
+
 export const getAllProducts = () =>
   apiClient.get(`products`, {
     auth: {

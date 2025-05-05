@@ -1,8 +1,10 @@
 package com.stephen.backend.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +30,16 @@ public class ProductController {
 		return productService.createProduct(newProduct);
 	}
 	
+	@PostMapping("/products")
+	List<Product> createProducts(@RequestBody List<Product> products) {
+		List<Product> result = new ArrayList<>();
+		for (Product p : products) {
+			result.add(productService.createProduct(p));
+		}
+		return result;
+	}
+	
+	@Cacheable("products")
 	@GetMapping("/products")
 	List<Product> getAllProducts() {
 		return productService.getProducts();
