@@ -1,7 +1,7 @@
 Full Stack ecommerce application with payment processing, user authentication, and a chatbot
 
 Frontend: React, TypeScript, JavaScript, Redux <br/>
-Backend: Java, Spring Boot, JUnit, MySQL, NodeJS, Stripe
+Backend: Java, Spring Boot, JUnit, MySQL, NodeJS, Stripe <br/>
 ChatBot: Python, Pytorch, NLTK, Flask, Numpy
 
 
